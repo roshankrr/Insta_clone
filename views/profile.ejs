@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <center>
+        <div class="main w-[30rem] h-[50rem] overflow-hidden mx-5 border-black my-5 py-5 border border-black  ">
+
+            <div class="top h-[3rem] flex justify-center gap-[10vw] border-b border-black  item-center">
+                <div class="icon"><a href="/feed"><i class="ri-home-5-line text-2xl"></i></a></div>
+                <img class="border-md h-[2rem] w-2rem" src="https://images2.imgbox.com/25/22/z7B5Jnww_o.png" alt="">
+                <div class="icon"><i class="ri-send-plane-fill  text-2xl"></i></div>
+            </div>
+            <div class="middle w-100 border-black border-b ">
+                <div class="midtop flex justify-center w-100 h-50  gap-10 pt-5  item-center ">
+
+                    <div class="uploadingField" style="display: none;">
+                        <form action="/profileEdit" method="post" enctype="multipart/form-data">
+                          <input class="takefile" type="file" name="file" />
+                          <input class="submit upload" type="submit" value="upload">
+                        </form>
+                      </div>
+                        <div class="mleft h-28 w-28 relative bg-black rounded-full overflow-hidden">
+                            
+
+
+                            <img class="rounded-full bg-bottom bg-cover  border border-black hover:blur-[1px]"
+                                src="/images/profilePic/<%=user.dp%>"
+                                alt="profile pic">
+
+                                    
+                                 
+                                    
+
+                                <div class=" edit absolute  top-[80%] left-[80%] translate-x-[-50%] translate-y-[-50%]  "><i class="ri-pencil-line text-black p-1 bg-white rounded-full  text-xl t-0"></i></div>
+                            
+                        </div>
+                    
+                    <div class="mright w-76 flex-col justify-center   ">
+                        <div class="mrtop flex justify-center gap-10 w-full ">
+                            <div class="d1">140 <br>posts</div>
+                            <div class="d2">1203 <br>followers</div>
+                            <div class="d3">18 <br>following</div>
+                        </div>
+                        <div class="mrbottom h-100 w-100  justify-center py-5 gap-5 flex">
+                            <button class="p-1 px-10 bg-red-500 text-white rounded-md ">Contact</button>
+                            <button
+                                class="p-1 px-10 border border-black rounded-md hover:bg-black hover:text-white duration-5 transition">Follow</button>
+                        </div>
+                        <a href="/logout"><button
+                                class="p-1 px-10 border border-black rounded-md hover:bg-black hover:text-white duration-5 transition">Logout</button>
+                        </a>
+
+                    </div>
+                </div>
+                <div class=" w-full  flex flex-col text-start pl-5 py-5">
+                    <h3>
+                        <%=user.username%>
+                    </h3>
+                    <h3>
+                        <%=user.email%>
+                    </h3>
+                    <h3>
+                        <%=user.fullname%>
+                    </h3>
+                </div>
+            </div>
+            <div class="posts">
+                <div class="ptop w-80 flex text-2xl justify-between ">
+                    <div class="icon text-slate-400 hover:text-black hover:cursor-pointer"><i class="ri-tv-line"></i>
+                    </div>
+                    <div class="icon text-slate-400 hover:text-black hover:cursor-pointer"><i class="ri-layout-grid-2-line"></i></i>
+                    </div>
+                    <div class="icon text-slate-400 hover:text-black hover:cursor-pointer"><i class="ri-user-fill"></i>
+                    </div>
+                </div>
+                <div
+                    class="images  w-[30rem] h-[30rem]  flex justify-center flex-wrap gap-5 leading-2 py-5  overflow-y-auto scrollbar-hide">
+                    <% user.posts.forEach(function(post){ %>
+                        <div class="cardBox">
+                            <a href="/images/uploads/<%= post.image %>">
+                                <img class="h-32 w-32 " src="/images/uploads/<%= post.image %>" alt="img">
+                            </a>
+                        </div>
+                        <% }) %>
+
+
+
+                </div>
+            </div>
+    </center>
+
+
+    <script src="/javascripts/profile.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+
+</html>
